@@ -21,10 +21,10 @@ node
 
 #### Abrir novo terminal e fazer o checkout desse projeto (posting-system) e seguir o passo abaixo
 
-git checkout https://github.com/farzac/posting-system.git   &&
+git clone https://github.com/farzac/posting-system.git
 
 
-cd posting-system/backend/   &&
+cd posting-system/backend/  &&
 rm -rf target/  &&
 sudo chmod 777 mvnw  &&
 ./mvnw spring-boot:run
