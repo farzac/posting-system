@@ -1,11 +1,11 @@
 
 <br/>
 <p align="center">
-  <h3 align="center">Posting-upvote</h3>
+  <h2 align="center">Posting-upvote</h2>
 </p>
 
 
-# Passos para subir aplicação
+## Passos para subir aplicação
 
 
 ## Contexto
