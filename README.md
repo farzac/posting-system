@@ -21,7 +21,7 @@ node
 
 #### Abrir novo terminal e fazer o checkout desse projeto (posting-system) e seguir o passo abaixo
 
-git checkout https://github.com/farzac/posting-system.git   &&
+git checkout https://github.com/farzac/posting-system.git  &&
 
 
 cd posting-system/backend/   &&
