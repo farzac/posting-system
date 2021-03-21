@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import com.fabioz.api.domain.entity.Post;
-import com.fabioz.api.payload.response.PostResponse;
 
 
 /**
@@ -15,7 +14,7 @@ public interface IPostService {
 
 	public void save(Post post);
 
-	public List<PostResponse> findAll();
+	public List<Post> findAll();
 	
 	Optional<Post> update(Integer id);
 

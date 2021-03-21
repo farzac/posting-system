@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fabioz.api.domain.entity.Post;
 import com.fabioz.api.payload.response.PostRequest;
-import com.fabioz.api.payload.response.PostResponse;
 import com.fabioz.api.service.IPostService;
 
 import io.swagger.annotations.ApiOperation;
@@ -36,17 +35,22 @@ public class PostController {
 	private final IPostService postService;
 
 	@CrossOrigin
-    @ApiOperation(value = "Cria um novo produto na base de dados")
+    @ApiOperation(value = "Recupera os dados de todas as postagens.")
     @ApiResponses(value = {
-            @ApiResponse(code = 201, message = "Retorna 201 quando o produto foi criado com sucesso."),
-            @ApiResponse(code = 400, message = "Retorna 400 quando ocorrer algum erro de validação do domínio.")
+            @ApiResponse(code = 200, message = "Retorna 200 quando os postagens forem retornadas com sucesso.")
     })
 	@GetMapping
     public ResponseEntity<?> findAll() {
-        List<PostResponse> postagem = postService.findAll();
+        List<Post> postagem = postService.findAll();
         return ResponseEntity.ok().body(postagem);
     }
 
+	@CrossOrigin
+    @ApiOperation(value = "Registra um nova postagem na base de dados H2.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Retorna 201 quando a postagem for cadastrada com sucesso."),
+            @ApiResponse(code = 400, message = "Retorna 400 quando ocorrer algum erro de validação.")
+    })
     @PostMapping
     public ResponseEntity<?> save(@RequestBody PostRequest body) {
     	Post post = new Post();
@@ -55,6 +59,13 @@ public class PostController {
         return ResponseEntity.noContent().build();
     }
 
+	@CrossOrigin
+    @ApiOperation(value = "Atualiza a postagem adicionando mais um voto para o post.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Retorna 200 quando o post for atualizada com sucesso."),
+            @ApiResponse(code = 400, message = "Retorna 400 quando ocorrer algum erro de validação."),
+            @ApiResponse(code = 404, message = "Retorna 404 quando o post que se deseja atualizar não existe na base de dados.")
+    })
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable Integer id) {
         postService.update(id);
