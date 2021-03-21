@@ -57,6 +57,8 @@ npm start
 
 
 ## Endereço web da aplicação
+
+[http://localhost:3000](http://localhost:3000) para visualizar a aplicação web.<br>
  
 [http://localhost:9999/swagger-ui.html](localhost:9999/swagger-ui.html) para visualizar o Swagger.<br>
 
