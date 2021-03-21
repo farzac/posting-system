@@ -1,4 +1,4 @@
-package com.fabioz.postingms.controller;
+package com.fabioz.api.rest.controller;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
