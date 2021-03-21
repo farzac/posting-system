@@ -58,13 +58,9 @@ npm start
 
 ## Endereço web da aplicação
 
-[http://localhost:3000](http://localhost:3000) para visualizar a aplicação web.<br>
- 
 [http://localhost:9999](http://localhost:9999) para visualizar o Swagger.<br>
 
-
 [http://localhost:3000](http://localhost:3000) para visualizar a aplicação web.<br>
-
 
 [http://localhost:9999/h2-console](http://localhost:9999/h2-console) para visualizar o console do banco H2.<br>
 
