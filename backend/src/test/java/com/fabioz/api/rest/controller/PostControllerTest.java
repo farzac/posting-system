@@ -1,8 +1,25 @@
 package com.fabioz.api.rest.controller;
 
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
+import com.fabioz.api.domain.entity.Post;
+import com.fabioz.api.payload.response.PostRequest;
+import com.fabioz.api.service.IPostService;
+
+import io.restassured.module.mockmvc.RestAssuredMockMvc;
 
 /**
  * @author fabioz
@@ -11,67 +28,76 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 class PostControllerTest {
    
-	//@Mock
-	//private IScheduleService iScheduleService;
-
-    @Test
-    void saveScheduleTest(){
-        /*
+	@InjectMocks
+	private PostController postController;
+	
+	@Mock
+	private IPostService ipostService;
+	
+	//Mock
+	//private PostRepository postRepository;
+	
+	
+	@BeforeEach
+	public void setup() {
+		RestAssuredMockMvc.standaloneSetup(postController);
+	}
+	
+	@Test
+    public void getPostTest(){
     	// Arrange
-    	Schedule schedule = new Schedule();
-        schedule.setName("pauta1");
+		Post post = new Post();
+    	post.setText("Testando post1");
+    	post.setUpvote(1);
+	
+    	List<Post> postList = new ArrayList<Post>();
+    	postList.add(post);
+    	
+    	when(this.ipostService.findAll()).thenReturn(postList);
         
-        IScheduleService iScheduleService = Mockito.mock(IScheduleService.class);
-        this.scheduleControler = new ScheduleControler(iScheduleService);
+    	// Action
+        ResponseEntity<?> httpStatus = this.postController.findAll();
 
-        when(this.iScheduleService.saveSchedule(schedule)).thenReturn(schedule);
-
+        // Assert
+        assertEquals(HttpStatus.OK, httpStatus.getStatusCode());
+    }
+	
+	@Test
+    public void savePostTest(){
+        // Arrange
+		Post post = new Post();
+    	post.setText("Testando post1");
+    	post.setUpvote(1);
+    	
+    	PostRequest postRequest = new PostRequest();
+    	postRequest.setText("Testando post1");
+    	postRequest.setUpvote(1);
+    	 
+        when(this.ipostService.save(post)).thenReturn(post);
+        
         // Action
-        ResponseEntity<Schedule> httpStatus = this.scheduleControler.saveSchedule(schedule);
-
+        ResponseEntity<?> httpStatus = this.postController.save(postRequest);
+        
         // Assert
         assertEquals(HttpStatus.CREATED, httpStatus.getStatusCode());
-    */
+    
     }
+    
 
     @Test
-    void getAssociatesTest(){
+    public void updatePostTest(){
         // Arrange
-    	/*
-    	Schedule schedule = new Schedule();
-    	schedule.setName("pauta1");
-        List<Schedule> schedules = new ArrayList<>();
-        schedules.add(schedule);
+        Integer id = 1;
+        Post post = new Post();
+        post.setId(id);
         
-        doReturn(schedules).when(iScheduleService).getAllSchedules();
-
+        when(this.ipostService.update(post.getId())).thenReturn(post);
+        
         // Action
-        ResponseEntity<List<Schedule>> httpStatus = this.scheduleControler.getSchedules();
+        ResponseEntity<?> httpStatus = this.postController.update(post.getId());
 
         // Assert
         assertEquals(HttpStatus.OK, httpStatus.getStatusCode());
-    	*/
-    }
-
-    @Test
-    void deleteAssociateTest(){
-        // Arrange
-        /*
-    	Integer id = 1;
-        Schedule schedule = new Schedule();
-        schedule.setId(id);
-        
-        
-        // void methods 
-        doNothing().when(iScheduleService).deleteSchedule(1);
-        
-        
-        // Action
-        ResponseEntity<?> httpStatus = this.scheduleControler.deleteSchedule(schedule.getId());
-
-        // Assert
-        assertEquals(HttpStatus.OK, httpStatus.getStatusCode());
-    	*/
     }
 }
 

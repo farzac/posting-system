@@ -5,7 +5,6 @@
 package com.fabioz.api.service.impl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -26,8 +25,8 @@ public class PostServiceImpl implements IPostService {
 	private final PostRepository repository;
 
 	@Override
-	public void save(Post post) {
-		repository.save(post);
+	public Post save(Post post) {
+		return repository.save(post);
 	}
 
 	@Override
@@ -37,11 +36,12 @@ public class PostServiceImpl implements IPostService {
 	}
 
 	@Override
-	public Optional<Post> update(Integer id) {
-		return repository.findById(id).map(posts -> {
-			posts.setUpvote(posts.getUpvote() + 1);
-			return repository.save(posts);
-		});
+	public Post update(Integer id) {
+		Post post = repository.findById(id).orElse(null);
+		//return repository.findById(id).orElse(new Post()).map(posts -> {
+		post.setUpvote(post.getUpvote() + 1) ;
+		return repository.save(post);
+	//	});
 	}
 
 }

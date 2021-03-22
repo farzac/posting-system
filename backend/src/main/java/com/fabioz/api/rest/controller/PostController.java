@@ -52,11 +52,11 @@ public class PostController {
             @ApiResponse(code = 400, message = "Retorna 400 quando ocorrer algum erro de validação.")
     })
     @PostMapping
-    public ResponseEntity<?> save(@RequestBody PostRequest body) {
+    public ResponseEntity<?> save(@RequestBody PostRequest postRequest) {
     	Post post = new Post();
-		BeanUtils.copyProperties(body, post);
-    	postService.save(post);
-        return ResponseEntity.noContent().build();
+		BeanUtils.copyProperties(postRequest, post);
+    	Post savePost = postService.save(post);
+    	return ResponseEntity.ok(savePost.getId());
     }
 
 	@CrossOrigin
@@ -68,7 +68,7 @@ public class PostController {
     })
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable Integer id) {
-        postService.update(id);
-        return ResponseEntity.noContent().build();
+		Post updatePost = postService.update(id);
+        return ResponseEntity.ok(updatePost);
     }
 }
