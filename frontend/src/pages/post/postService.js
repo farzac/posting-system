@@ -1,6 +1,7 @@
 import axios from 'axios';
+import environments from '../../main/environments';
 
-const api = 'http://127.0.0.1:9999';
+const api = environments.backendUrl;
 
 export async function getPost() {
     try{
