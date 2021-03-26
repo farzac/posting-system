@@ -38,8 +38,7 @@ public class PostServiceImpl implements IPostService {
 	@Override
 	public Post update(Integer id) {
 		Post post = repository.findById(id).orElse(null);
-		//return repository.findById(id).orElse(new Post()).map(posts -> {
-		post.setUpvote(post.getUpvote() + 1) ;
+		post.setUpvote(post.getUpvote() + 1);
 		return repository.save(post);
 	//	});
 	}
