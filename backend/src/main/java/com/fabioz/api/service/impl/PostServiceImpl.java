@@ -31,7 +31,7 @@ public class PostServiceImpl implements IPostService {
 
 	@Override
 	public List<Post> findAll() {
-		List<Post> post = repository.findAll();
+		List<Post> post = repository.findAllByOrderByUpvoteDesc();
 		return post;
 	}
 
