@@ -43,7 +43,6 @@ public class SwaggerConfig {
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.fabioz.api.rest.controller"))
                 .paths(PathSelectors.any())
-                //.paths(PathSelectors.ant("/api/v1/**"))
                 .build()
                 .useDefaultResponseMessages(false)
                 .apiInfo(apiInfo())

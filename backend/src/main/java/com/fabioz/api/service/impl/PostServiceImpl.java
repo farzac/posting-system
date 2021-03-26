@@ -40,7 +40,6 @@ public class PostServiceImpl implements IPostService {
 		Post post = repository.findById(id).orElse(null);
 		post.setUpvote(post.getUpvote() + 1);
 		return repository.save(post);
-	//	});
 	}
 
 }
