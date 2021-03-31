@@ -17,6 +17,7 @@ Pré-requisito
 
 - [JDK >= 8](https://www.oracle.com/br/java/technologies/javase-downloads.html) – Versão Java disponivel.
 - [Node](https://nodejs.org/pt-br/download/) – Versão Node disponivel.
+- [Azure](https://azure.microsoft.com/pt-br/features/azure-portal/) – Aplicativo web do Azure.
 
 
 ## Passos para testes
@@ -56,6 +57,21 @@ npm start
 
 
 
+### Aplicacao Azure
+
+
+#### Abrir novo terminal e entrar no diretorio do checkout do projeto conforme segue abaixo
+
+```sh
+cd posting-system/backend/
+# A configuracao ja foi feita no arquivo pom.xml, então o comando abaixo :config não será necessário para esta aplicação, apenas o comando do deply.
+#mvn azure-webapp:config
+mvn azure-webapp:deploy
+```
+
+
+
+
 ## Endereço web da aplicação
 
 [http://localhost:9999/swagger-ui.html#/](http://localhost:9999/swagger-ui.html#/) para visualizar o Swagger.<br>
@@ -63,5 +79,7 @@ npm start
 [http://localhost:3000](http://localhost:3000) para visualizar a aplicação web.<br>
 
 [http://localhost:9999/h2-console](http://localhost:9999/h2-console) para visualizar o console do banco H2.<br>
+
+[http://posting-ms.azurewebsites.net/swagger-ui.html#/](http://posting-ms.azurewebsites.net/swagger-ui.html#/) para visualizar o Swagger na Azure.<br>
 
 
