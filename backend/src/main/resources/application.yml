@@ -1,7 +1,7 @@
 info:
   app:
     name: "Posting Ms"
-    description: "Microserviço que provê um catálogo de Produtos"
+    description: "Microserviço que provê um catálogo de Mensagens"
     version: 0.0.1
 spring:
   profiles:
