@@ -78,7 +78,7 @@
     <dependency> 
       <groupId>com.h2database</groupId>  
       <artifactId>h2</artifactId>  
-      <scope>provided</scope> 
+      <scope>runtime</scope> 
     </dependency>  
     <dependency> 
       <groupId>io.rest-assured</groupId>  
@@ -97,11 +97,17 @@
         <artifactId>azure-webapp-maven-plugin</artifactId>  
         <version>1.7.0</version>  
         <configuration>
-          <schemaVersion>V2</schemaVersion>
+          <schemaVersion>V3</schemaVersion>
           <resourceGroup>first-azure-application</resourceGroup>
           <appName>posting-ms</appName>
           <pricingTier>B1</pricingTier>
           <region>westeurope</region>
+          <appSettings>
+          	<property>
+          		<name>JAVA_OPTS</name> 
+          		<value>-Dserver.port=80</value>
+          	</property>
+          </appSettings>
           <runtime>
             <os>linux</os>
             <javaVersion>jre8</javaVersion>
@@ -121,7 +127,6 @@
       </plugin>  
       <plugin> 
         <artifactId>maven-dependency-plugin</artifactId>  
-        <version>3.1.1</version>
         <!--$NO-MVN-MAN-VER$-->  
         <executions> 
           <execution> 
