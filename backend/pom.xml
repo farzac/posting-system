@@ -97,7 +97,7 @@
         <artifactId>azure-webapp-maven-plugin</artifactId>  
         <version>1.7.0</version>  
         <configuration>
-          <schemaVersion>V3</schemaVersion>
+          <schemaVersion>V2</schemaVersion>
           <resourceGroup>first-azure-application</resourceGroup>
           <appName>posting-ms</appName>
           <pricingTier>B1</pricingTier>
